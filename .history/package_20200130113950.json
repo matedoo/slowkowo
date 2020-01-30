@@ -1,0 +1,25 @@
+{
+  "name": "slowkowo",
+  "version": "1.0.0",
+  "main": "play.js",
+  "dependencies": {
+    "nodemon": "^2.0.2",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matedoo/slowkowo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matedoo/slowkowo/issues"
+  },
+  "homepage": "https://github.com/matedoo/slowkowo#readme",
+  "description": ""
+}
