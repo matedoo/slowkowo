@@ -96,6 +96,11 @@ socket.on('word-message', word => {
   const lastChar =  word.substr(word.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
   
+  
+
+
+  
+  
   // 
 })
 

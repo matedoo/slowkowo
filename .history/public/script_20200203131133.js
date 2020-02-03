@@ -52,7 +52,7 @@ const wordInput = document.getElementById('word-input')
 const whoIsTurn = document.getElementById('whoIsTurn')
 const roomContainer = document.getElementById('room-container')
 const firstLetterContainer = document.querySelector('.first-letter p');
-
+const lastChar =  word.substr(word.length -1);
 if (messageForm != null) {
   const name = prompt('Podaj swoje imię')
   appendInfo('Dołączyłeś')
@@ -93,8 +93,13 @@ socket.on('room-created', room => {
 socket.on('word-message', word => {
   // appendWord(word)
   wordContainer.innerText = word
-  const lastChar =  word.substr(word.length -1);
+  
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
+  
+  
+
+
+  
   
   // 
 })

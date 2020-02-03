@@ -52,7 +52,9 @@ const wordInput = document.getElementById('word-input')
 const whoIsTurn = document.getElementById('whoIsTurn')
 const roomContainer = document.getElementById('room-container')
 const firstLetterContainer = document.querySelector('.first-letter p');
-
+const lastChar = '';
+lastChar =  word.substr(word.length -1);
+firstLetterContainer.innerHTML = lastChar.toUpperCase();
 if (messageForm != null) {
   const name = prompt('Podaj swoje imię')
   appendInfo('Dołączyłeś')
@@ -65,17 +67,10 @@ if (messageForm != null) {
     socket.emit('send-word', roomName, word)
     wordInput.value = ''
 
-  //   console.log(word);
-  // console.log(lastChar);
-  // console.log(wordInput.value);
-  // if(lastChar == wordInput.value[0]){
-  //   console.log('poprawne slowo');
-  // }
-  // else{
-  //   console.log('nie poprawne slowo');
+    console.log(`${word[0]} <-- pierwsza litera slowa przeciwnika`);
+    console.log(`${lastChar} <-- ostatnia litera slowa przeciwnika`);
     
-  // }
-  
+    
   })
 }
 
@@ -93,8 +88,8 @@ socket.on('room-created', room => {
 socket.on('word-message', word => {
   // appendWord(word)
   wordContainer.innerText = word
-  const lastChar =  word.substr(word.length -1);
-  firstLetterContainer.innerHTML = lastChar.toUpperCase();
+ 
+  console.log(word);
   
   // 
 })

@@ -64,18 +64,7 @@ if (messageForm != null) {
     // appendWord(word)
     socket.emit('send-word', roomName, word)
     wordInput.value = ''
-
-  //   console.log(word);
-  // console.log(lastChar);
-  // console.log(wordInput.value);
-  // if(lastChar == wordInput.value[0]){
-  //   console.log('poprawne slowo');
-  // }
-  // else{
-  //   console.log('nie poprawne slowo');
     
-  // }
-  
   })
 }
 
@@ -93,8 +82,14 @@ socket.on('room-created', room => {
 socket.on('word-message', word => {
   // appendWord(word)
   wordContainer.innerText = word
-  const lastChar =  word.substr(word.length -1);
+  lastChar =  word.substr(word.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
+  console.log(word);
+  
+  OpWord = '';
+  OpWord = wordInput
+  OpWord.innerHTML = wordInput;
+  console.log(`${OpWord.value} <-- czy to jest slowo przecinka`);
   
   // 
 })
