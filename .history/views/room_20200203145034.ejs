@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slowkowo</title>
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+  <style>
+   body {
+    font-size: 1.5rem;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:black;
+}
+h1 {
+    color: 
+    #11998e;
+    font-family: 'Parisienne', cursive;
+}
+.move_player {
+    width: 100%;
+    text-align: center;
+    background-color: 
+    #11998e;
+    font-size: 1.8rem;
+}
+.word_opponent {
+    padding: 15px 0 15px 0;
+    text-align: center;
+}
+.word_opponent_text {
+    font-weight: 700;
+    border-width: 3px;
+    background: linear-gradient(to right, #11998e,#38ef7d);
+    border-image-slice: 1;
+    outline: 0;
+    border: 2px solid;
+}
+.first-letter {
+    text-align: center;
+}
+.user_draw {
+    position: relative;
+    padding: 15px 0 0;
+}
+.draw_word {
+    font-family: inherit;
+    width: 100%;
+    border: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    padding: 2px 5px 2px 5px;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.draw_word:placeholder-shown  .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+}
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+}
+
+.rectangle_timer {
+    border: 1px solid 
+    green;
+    border-radius: 70px;
+    padding: 40px;
+    margin-top: 45px;
+}
+  </style>
+</head>
+<body>
+     <header class="main_header">
+        <h1>słówkowo</h1>
+    </header>
+    <div class="move_player">
+        <p id="info-container"></p>
+    </div> 
+     <div class="word_opponent">
+        <p id="whoIsTurn">Słowo przeciwnika: </p>
+        <p id="word-container" class="word_opponent_text"></p>
+    </div>
+
+    <div class="word_your">
+        <p>Podaj słowo na literę</p>
+        <div class="first-letter">
+            <p></p>
+        </div>
+    </div>
+    <div class="user_draw_container">
+         <div id="message-container"></div> 
+        <div class="user_draw">
+          <form id="send-container">
+            <input type="text" class="draw_word" id="word-input" placeholder="Wpisz słowo" name="" id=''  />
+            <label for="" class="form__label">Wpisz słowo</label>
+            <button type="submit" class="check" id="send-button">Send</button>
+          </form>
+        </div>
+    </div>
+    <div class="rectangle_timer"> 
+        <span id="time">10</span>
+    </div>   
+</body>
+</html>

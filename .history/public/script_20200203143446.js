@@ -15,6 +15,11 @@ if (messageForm != null) {
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
     const word = wordInput.value
+    // appendWord(word)
+    // console.log(word);
+    // console.log(word.substr(word.length -1));
+    // // console.log(firstLetterContainer.value);
+    // console.log(wordContainer.innerText);
 
     if(word[0] == wordContainer.innerText.substr(wordContainer.innerText.length -1)){
       socket.emit('send-word', roomName, word)
@@ -22,22 +27,23 @@ if (messageForm != null) {
       appendInfo(`Ruch przeciwnika`)
       wordContainer.innerText = '---'
       firstLetterContainer.innerHTML = '?'
+      
     }
     else{
-      appendInfo(`Nie poprawne slowo`)    
+      // socket.emit('send-word', roomName, word)
+      appendInfo(`Nie poprawne slowo`)
+      // console.log('nie poprawne slowo');
+      
     }
     wordInput.value = ''
   })
 }
 socket.on('word-message', word => {
+  // appendWord(word)
   wordContainer.innerText = word
   const lastChar =  word.substr(word.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
   appendInfo(`Twój ruch`)
-  
-  // var tenSeconds = 10,
-  // display = document.querySelector('#time');
-  // startTimer(tenSeconds, display);
 })
 
 socket.on('room-created', room => {
@@ -59,10 +65,6 @@ socket.on('user-connected', name => {
   wordContainer.innerText = randomWord;
   const lastChar =  randomWord.substr(randomWord.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
-
-  // var tenSeconds = 10,
-  // display = document.querySelector('#time');
-  // startTimer(tenSeconds, display);
 })
 
 socket.on('user-disconnected', name => {
@@ -75,25 +77,3 @@ socket.on('user-disconnected', name => {
 function appendInfo(info){
     infoContainer.innerText = info
 }
-
-// function startTimer(duration, display) {
-//   var timer = duration,  seconds;
-//   setInterval(function () {
-//       seconds = parseInt(timer % 60, 10);
-
-//       seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//       display.textContent =  seconds;
-
-//       if (--timer < 0) {
-//           // timer = duration;
-//           appendInfo('Koniec czasu')
-//           clearInterval()
-          
-//       }
-//   }, 1000);
-// }
-
-// window.onload = function () {
- 
-// };

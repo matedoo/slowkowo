@@ -34,10 +34,6 @@ socket.on('word-message', word => {
   const lastChar =  word.substr(word.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
   appendInfo(`Twój ruch`)
-  
-  // var tenSeconds = 10,
-  // display = document.querySelector('#time');
-  // startTimer(tenSeconds, display);
 })
 
 socket.on('room-created', room => {
@@ -59,10 +55,6 @@ socket.on('user-connected', name => {
   wordContainer.innerText = randomWord;
   const lastChar =  randomWord.substr(randomWord.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
-
-  // var tenSeconds = 10,
-  // display = document.querySelector('#time');
-  // startTimer(tenSeconds, display);
 })
 
 socket.on('user-disconnected', name => {
@@ -75,25 +67,3 @@ socket.on('user-disconnected', name => {
 function appendInfo(info){
     infoContainer.innerText = info
 }
-
-// function startTimer(duration, display) {
-//   var timer = duration,  seconds;
-//   setInterval(function () {
-//       seconds = parseInt(timer % 60, 10);
-
-//       seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//       display.textContent =  seconds;
-
-//       if (--timer < 0) {
-//           // timer = duration;
-//           appendInfo('Koniec czasu')
-//           clearInterval()
-          
-//       }
-//   }, 1000);
-// }
-
-// window.onload = function () {
- 
-// };

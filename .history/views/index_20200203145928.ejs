@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
-    <link rel="stylesheet" href="/style.css" type="text/css">
+    <link rel="stylesheet" href="public/style.css">
     <title>Slowkowo</title>
     
 </head>
 <body>
     <div id="room-container">
         <% Object.keys(rooms).forEach(room => { %>
-          <div><%=`Nazwa pokoju: ${room} `%></div>
-          <a href="/<%= room %>"><span class="btn_room">Dołącz do pokoju</span></a>
+          <div><%= room %></div>
+          <a href="/<%= room %>">Join</a>
         <% }) %>
       </div>
       <form action="/room" method="POST">
-        <input class="input_new_room" name="room" type="text" required>
-        <button class="create_new_room" type="submit">Stwórz nowy pokój</button>
+        <input name="room" type="text" required>
+        <button type="submit">New Room</button>
       </form>
 </body>
 </html>
