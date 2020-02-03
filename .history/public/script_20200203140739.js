@@ -1,3 +1,49 @@
+// kod komunikacja
+// const socket = io('http://localhost:3000')
+// const infoContainer = document.getElementById('info-container')
+// const wordContainer = document.getElementById('word-container')
+// const messageForm = document.getElementById('send-container')
+// const wordInput = document.getElementById('word-input')
+// const whoIsTurn = document.getElementById('whoIsTurn')
+
+// const name = prompt('Podaj swoje imię')
+// appendInfo('Dołączyłeś')
+// socket.emit('new-user', name)
+
+// socket.on('word-message', word => {
+//   // appendWord(word)
+//   wordContainer.innerText = word
+//   console.log(word);
+//   // 
+// })
+
+// socket.on('user-connected', name => {
+//   appendInfo(`${name} dołączył do gry`)
+// })
+
+// socket.on('user-disconnected', name => {
+//   appendInfo(`${name} wyszedł z gry`)
+// })
+
+// messageForm.addEventListener('submit', e => {
+//   e.preventDefault()
+//   const word = wordInput.value
+//   // appendWord(word)
+//   socket.emit('send-word', word)
+//   wordInput.value = ''
+  
+// })
+
+// // function appendWord(word) {
+// //   wordContainer.innerText = word
+// // }
+// function appendInfo(info){
+//     infoContainer.innerText = info
+// }
+// koniec
+
+
+
 const socket = io('http://localhost:3000')
 const infoContainer = document.getElementById('info-container')
 const wordContainer = document.getElementById('word-container')
