@@ -1,0 +1,264 @@
+body {
+    font-size: 1.5rem;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:black;
+}
+h1, .room-info {
+    text-align: center;
+    color: #11998e;
+    font-family: 'Parisienne', cursive;
+}
+.move_player {
+    width: 100%;
+    text-align: center;
+    background-color: 
+    #11998e;
+    font-size: 1.8rem;
+}
+.word_opponent {
+    padding: 15px 0 15px 0;
+    text-align: center;
+}
+.word_opponent_text {
+    font-weight: 700;
+    border-width: 3px;
+    background: linear-gradient(to right, #11998e,#38ef7d);
+    border-image-slice: 1;
+    outline: 0;
+    border: 2px solid;
+}
+.points-container{
+    width: 40%;
+}
+.first-letter {
+    text-align: center;
+    color: #11998e;
+    font-weight: 700;
+    font-size: 2.6rem;
+    margin: -15px 10px -30px 10px;
+}
+.user_draw {
+    position: relative;
+    padding: 15px 0 0;
+}
+.draw_word {
+    font-family: inherit;
+    width: 95%;
+    border: 2px solid #9b9b9b;
+    outline: 0;
+    font-size: 1.3rem;
+    padding: 2px 5px 2px 5px;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.draw_word:focus {
+    border-width: 2px;
+    border-image: linear-gradient(to right, #11998e, #38ef7d);
+    border-image-slice: 1;
+  }
+.draw_word:placeholder-shown  .form__label {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+}
+.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+}
+.check{
+    width: 100%;
+    background-image: linear-gradient(to right,
+    #11998e,
+    #38ef7d);
+    border: 1px
+    aliceblue;
+    height: 25px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+/* timer */
+.timer-circ{
+    margin-top: 30px;
+}
+.base-timer {
+    position: relative;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .base-timer__svg {
+    transform: scaleX(-1);
+  }
+  
+  .base-timer__circle {
+    fill: none;
+    stroke: none;
+  }
+  
+  .base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+  }
+  
+  .base-timer__path-remaining {
+    stroke-width: 7px;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 1s linear all;
+    fill-rule: nonzero;
+    stroke: currentColor;
+  }
+  
+  .base-timer__path-remaining.green {
+    color: rgb(65, 184, 131);
+  }
+  
+  .base-timer__path-remaining.orange {
+    color: orange;
+  }
+  
+  .base-timer__path-remaining.red {
+    color: red;
+  }
+  
+  .base-timer__label {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+  }
+
+
+  /* modal */
+
+/* *1*: make it "untouchable"
+ **/
+
+.is-hidden--off-flow {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  z-index: -10;   /* *1* */
+  visibility: hidden;   /* *1* */
+}
+
+.is-shown--off-flow {
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+  visibility: visible;
+}
+
+/* .c-content {
+  padding: 30px;
+    text-align: left;
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 18px;
+} */
+
+div {
+  margin-bottom: 12px;
+}
+
+.l-modal {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 2;
+  text-align: center;
+}
+
+.l-modal__shadow {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: block;
+  background: #161616;
+  opacity: 0.92;
+  z-index: -1;
+  cursor: pointer;
+}
+
+.l-modal__body {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.c-popup {
+  display: inline-block;
+  text-align: center;
+  background: white;
+  max-width: 400px;
+  width: 90%;
+  line-height: 1.48;
+}
+
+.c-popup__img {
+    background-image: url('./views/img/sad-pepe.png');
+  max-width: 220px;
+  max-height: 220px;
+  margin: 0 auto;
+  padding: 60px 60px 40px;
+  ;
+}
+
+.h-img-resp {
+  max-width: 100%;
+}
+
+.c-popup__title {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 1.4em;
+  color: #3a3a3a;
+  font-weight: normal;
+}
+
+.button-primary {
+  background: #0c58a7;
+  background: linear-gradient(#0c58a7, #0b3a83);
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.4) inset;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 18px;
+  border-radius: 1px;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+  transition: all 0.2s ease-out;
+}
+
+.button-primary:hover {
+  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.4) inset, 0 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease-in;
+  color: #f2f2f2;
+}
+
+/* .c-popup__note {
+  opacity: 0.2;
+  font-size: 1em;
+  margin-top: 6px;
+  margin-bottom: 60px;
+} */

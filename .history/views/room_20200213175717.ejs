@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slowkowo</title>
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <script>
+    const roomName = "<%= roomName %>"   
+  </script>
+  <!-- <script defer src="https://slowkowo.herokuapp.com/socket.io/socket.io.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+     <header class="main_header">
+        <h1>słówkowo</h1>
+    </header>
+    <div class="move_player">
+        <p id="info-container"></p>
+    </div> 
+     <div class="word_opponent">
+        <p id="whoIsTurn">Słowo przeciwnika: </p>
+        <p id="word-container" class="word_opponent_text"></p>
+    </div>
+
+    <div class="word_your">
+        <p>Podaj słowo na literę</p>
+        <div class="first-letter">
+            <p></p>
+        </div>
+    </div>
+    <div class="user_draw_container">
+         <div id="message-container"></div> 
+        <div class="user_draw">
+          <form id="send-container">
+            <input type="text" class="draw_word" id="word-input" placeholder="Wpisz słowo" name="" id=''  />
+            <label for="" class="form__label"></label>
+            <button type="submit" class="check" id="send-button">Wyślij</button>
+          </form>
+        </div>
+    </div>
+    <div class="rectangle_timer"> 
+        <span id="time">10</span>
+    </div>   
+
+    <h1>Val: <span id="val"><%=val%></span></h1>
+
+    <button id="loadRequest">Refresh</button>
+
+    <script>
+    $(function() {
+    $('#loadRequest').click(function() {
+        $.get('/ajax', function(res) {
+            $('#val').text(res);
+        });
+    });
+});
+</script>
+</body>
+</html>

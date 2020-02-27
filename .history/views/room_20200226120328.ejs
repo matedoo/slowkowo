@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slowkowo</title>
+  <link rel="stylesheet" href="/style.css" type="text/css">
+  <script>
+    const roomName = "<%= roomName %>"   
+  </script>
+  <!-- <script defer src="https://slowkowo.herokuapp.com/socket.io/socket.io.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+     <header class="main_header">
+        <h1>słówkowo</h1>
+    </header>
+    <div class="move_player">
+        <p id="info-container"></p>
+    </div>     
+    <div class="word_opponent">
+      <p id="whoIsTurn">Słowo przeciwnika: </p>
+      <p id="word-container" class="word_opponent_text"></p>
+    </div>
+
+    <div class="word_your">
+        <p>Podaj słowo na literę</p>
+        <div class="first-letter">
+            <p></p>
+        </div>
+    </div>
+    <div class="user_draw_container">
+         <div id="message-container"></div> 
+        <div class="user_draw">
+          <form id="send-container">
+            <input type="text" class="draw_word" id="word-input" placeholder="Wpisz słowo" name="" id=''  />
+            <label for="" class="form__label"></label>
+            <button type="submit" class="check" id="send-button">Wyślij</button>
+          </form>
+        </div>
+    </div>
+
+    <div id="timer" class="timer-circ"></div>
+
+
+    <!-- Modal -->
+    <div class="c-content">
+      <div>Cupcake ipsum dolor sit amet cookie pastry halvah. Gummies sesame snaps candy canes liquorice candy liquorice powder pie. Jelly beans danish marzipan cake marzipan danish. Macaroon tootsie roll tart jelly-o chocolate cake jelly beans candy canes tiramisu
+        icing. Tart jelly beans muffin dragée. Bonbon chocolate bar danish chocolate pie. Croissant chocolate jelly sugar plum sugar plum candy. Pie topping topping. Jujubes cake cookie pudding tiramisu sesame snaps dragée. Chupa chups biscuit caramels toffee
+        pie caramels gummies. Jujubes donut tart tiramisu jelly-o. Tootsie roll chocolate cake marshmallow gingerbread bonbon. Fruitcake sugar plum macaroon wafer ice cream sweet. Marshmallow caramels tootsie roll topping chupa chups cake bear claw liquorice
+        oat cake.</div>
+      <a href="#" class="js-modal-show button-primary">learn about caramel</a>
+    </div>
+    <div class="l-modal is-hidden--off-flow js-modal-shopify">
+      <div class="l-modal__shadow js-modal-hide"></div>
+      <div class="c-popup l-modal__body">
+        <div class="c-popup__img">
+          <img src="https://lh3.googleusercontent.com/e32QLv_H4fsEE9ztnxkbRFQogySH-vMp4MiIxp_NC4tpFiPLB2vfNHrpGqeGY0Lyzg=w170" alt="" class="h-img-resp" />
+        </div>
+        <h3 class="c-popup__title">Eat your caramels!</h3>
+        <p class="c-popup__description">Don't forget to eat your caramels each day.<br />The are trully awesome!</p>
+        <a href="https://en.wikipedia.org/wiki/Caramel" class="button-primary">find out more</a>
+        <p class="c-popup__note">eat responsibly</p>
+      </div>
+    </div>
+</body>
+</html>

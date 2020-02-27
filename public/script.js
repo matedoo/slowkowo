@@ -1,4 +1,5 @@
-const socket = io('https://slowkowo.herokuapp.com')
+// const socket = io('https://slowkowo.herokuapp.com')
+const socket = io()
 const infoContainer = document.getElementById('info-container')
 const wordContainer = document.getElementById('word-container')
 const messageForm = document.getElementById('send-container')
@@ -15,13 +16,17 @@ if (messageForm != null) {
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
     const word = wordInput.value
-
+ 
     if(word[0] == wordContainer.innerText.substr(wordContainer.innerText.length -1)){
       socket.emit('send-word', roomName, word)
       console.log('poprawne slowo');
       appendInfo(`Ruch przeciwnika`)
       wordContainer.innerText = '---'
       firstLetterContainer.innerHTML = '?'
+
+      clearInterval(timerInterval);
+      timePassed = 0;
+      timeLeft = 10;
     }
     else{
       appendInfo(`Nie poprawne slowo`)    
@@ -34,11 +39,24 @@ socket.on('word-message', word => {
   const lastChar =  word.substr(word.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
   appendInfo(`Twój ruch`)
+
   
-  // var tenSeconds = 10,
-  // display = document.querySelector('#time');
-  // startTimer(tenSeconds, display);
+  startTimer();  
+  
 })
+
+
+
+// socket.on('testest', testData =>{
+//     if (Object.values(testData).indexOf(word) > -1) {
+//           console.log('dziala');
+//     }
+//   // console.log(testData);
+// })
+
+// socket.on('wrong-word-message', word => {
+//   appendInfo(`Słowo niezgodne z słownikiem, przegrales`)
+// })
 
 socket.on('room-created', room => {
   const roomElement = document.createElement('div')
@@ -59,41 +77,17 @@ socket.on('user-connected', name => {
   wordContainer.innerText = randomWord;
   const lastChar =  randomWord.substr(randomWord.length -1);
   firstLetterContainer.innerHTML = lastChar.toUpperCase();
-
-  // var tenSeconds = 10,
-  // display = document.querySelector('#time');
-  // startTimer(tenSeconds, display);
 })
 
 socket.on('user-disconnected', name => {
   appendInfo(`${name} wyszedł z gry`)
 })
 
-// function appendWord(word) {
-//   wordContainer.innerText = word
-// }
+
 function appendInfo(info){
     infoContainer.innerText = info
 }
 
-// function startTimer(duration, display) {
-//   var timer = duration,  seconds;
-//   setInterval(function () {
-//       seconds = parseInt(timer % 60, 10);
 
-//       seconds = seconds < 10 ? "0" + seconds : seconds;
 
-//       display.textContent =  seconds;
 
-//       if (--timer < 0) {
-//           // timer = duration;
-//           appendInfo('Koniec czasu')
-//           clearInterval()
-          
-//       }
-//   }, 1000);
-// }
-
-// window.onload = function () {
- 
-// };

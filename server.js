@@ -3,6 +3,8 @@ const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
+var router = express.Router();
+
 app.set('port',(process.env.PORT || 5000))
 app.set('views', './views')
 app.set('view engine', 'ejs')
@@ -37,6 +39,17 @@ server.listen(app.get('port'), () =>{
   console.log('Node app is running', app.get('port'));
   
 })
+
+//odczytanie slow i wrzucenie do obiektu
+var fs = require('fs');
+
+var data = fs.readFileSync('client/slowa.txt');
+        var testData = {};
+        var splitList = data.toString().split('\r\n');
+        for (var i = 0; i < splitList.length; i++) {
+            testData['fileNumber' + i.toString()] = splitList[i];
+        }
+//koniec
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
     socket.join(room)
@@ -44,9 +57,24 @@ io.on('connection', socket => {
     socket.to(room).broadcast.emit('user-connected', name)
   })
   socket.on('send-word', (room, word) => {
-    socket.to(room).broadcast.emit('word-message', word,{
-    name: rooms[room].users[socket.id] })
+      //proba
+        // if (Object.values(testData).indexOf(word) > -1) {
+        //   console.log('poprawne slowo');
+          
+          socket.to(room).broadcast.emit('word-message', word,{
+          name: rooms[room].users[socket.id] })
+          // wyslanie na front obiektu
+          // socket.emit("testtest", testData); 
+          
+      //  }
+      //  else{
+      //    console.log('nie poprawne slowo');
+      //    socket.to(room).broadcast.emit('wrong-word-message', word,{
+      //    name: rooms[room].users[socket.id] })   
+      //  }
+      //koniec
   })
+
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
       socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
@@ -61,7 +89,6 @@ function getUserRooms(socket) {
     return names
   }, [])
 }
-
 
 
 

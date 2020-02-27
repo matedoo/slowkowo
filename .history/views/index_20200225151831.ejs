@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <script defer src="https://slowkowo.herokuapp.com/socket.io/socket.io.js"></script> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="/style.css" type="text/css">
+    <title>Slowkowo</title>
+    
+</head>
+<body>
+  <header class="main_header">
+    <h1>słówkowo</h1>
+  </header>
+    <div id="room-container">
+        <% Object.keys(rooms).forEach(room => { %>
+          <div><%=`Nazwa pokoju: ${room} `%></div>
+          <a href="/<%= room %>"><span class="btn_room">Dołącz do pokoju</span></a>
+        <% }) %>
+      </div>
+      <form action="/room" method="POST">
+        <input class="input_new_room" name="room" type="text" required>
+        <button class="create_new_room" type="submit">Stwórz nowy pokój</button>
+      </form>
+</body>
+</html>

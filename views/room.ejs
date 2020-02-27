@@ -7,10 +7,12 @@
   <title>Slowkowo</title>
   <link rel="stylesheet" href="/style.css" type="text/css">
   <script>
-    const roomName = "<%= roomName %>"
+    const roomName = "<%= roomName %>"   
   </script>
-  <script defer src="https://slowkowo.herokuapp.com/socket.io/socket.io.js"></script>
+  <!-- <script defer src="https://slowkowo.herokuapp.com/socket.io/socket.io.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script>
   <script defer src="script.js"></script>
+  <script defer src="timer.js"></script>
 </head>
 <body>
      <header class="main_header">
@@ -18,10 +20,10 @@
     </header>
     <div class="move_player">
         <p id="info-container"></p>
-    </div> 
-     <div class="word_opponent">
-        <p id="whoIsTurn">Słowo przeciwnika: </p>
-        <p id="word-container" class="word_opponent_text"></p>
+    </div>     
+    <div class="word_opponent">
+      <p id="whoIsTurn">Słowo przeciwnika: </p>
+      <p id="word-container" class="word_opponent_text"></p>
     </div>
 
     <div class="word_your">
@@ -40,8 +42,21 @@
           </form>
         </div>
     </div>
-    <div class="rectangle_timer"> 
-        <span id="time">10</span>
-    </div>   
+
+    <div id="timer" class="timer-circ"></div>
+
+
+    <!-- Modal -->
+
+<div class="l-modal is-hidden--off-flow js-modal-shopify">
+  <div class="l-modal__shadow js-modal-hide"></div>
+  <div class="c-popup l-modal__body">
+    <div class="c-popup__img">
+      <img src="https://www.pngitem.com/pimgs/m/496-4966426_bloodborne-clipart-turtle-sad-pepe-transparent-hd-png.png" alt="" class="h-img-resp" />
+    </div>
+    <h3 class="c-popup__title">Przegrałeś!</h3>
+    <a href="" class="button-revenge">Rewanż!</a>
+  </div>
+</div>
 </body>
 </html>
