@@ -43,9 +43,30 @@ socket.on('word-message', word => {
   appendInfo(`Twój ruch`)
 
   
-  startTimer();
+  startTimer();  
+})
+
+socket.on('modal-message', modal => {
+  modal = 'wygrales'
+  console.log(modal);
   
 })
+
+
+ 
+  // setInterval(() => {
+  //   if(timeLeft == 0){
+  //     console.log('kuniec');
+      
+  //   }
+  // }, 2000);
+
+// console.log(winner);
+  
+// if(winner){
+//   showWin()
+// }
+// console.log(winner);
 
 // socket.on('testest', testData =>{
 //     if (Object.values(testData).indexOf(word) > -1) {
@@ -54,12 +75,9 @@ socket.on('word-message', word => {
 //   // console.log(testData);
 // })
 
-socket.on('wrong-word-message', word => {
-  // let word = 'Słowo niezgodne z słownikiem, przegrales'
-  appendInfo('Słowo niezgodne z słownikiem')
-  // startTimer()
-  
-})
+// socket.on('wrong-word-message', word => {
+//   appendInfo(`Słowo niezgodne z słownikiem, przegrales`)
+// })
 
 socket.on('room-created', room => {
   const roomElement = document.createElement('div')
@@ -150,7 +168,7 @@ function onTimesUp() {
   appendInfo('Koniec czasu')
   firstLetterContainer.innerHTML = 'Przegrałeś'
   showModal()
-
+  socket.emit('send-modal', roomName, modal)
 }
 
 function startTimer() {

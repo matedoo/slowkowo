@@ -55,10 +55,7 @@ socket.on('word-message', word => {
 // })
 
 socket.on('wrong-word-message', word => {
-  // let word = 'Słowo niezgodne z słownikiem, przegrales'
-  appendInfo('Słowo niezgodne z słownikiem')
-  // startTimer()
-  
+  appendInfo(`Słowo niezgodne z słownikiem, przegrales`)
 })
 
 socket.on('room-created', room => {

@@ -49,7 +49,7 @@ var data = fs.readFileSync('client/slowa.txt');
         for (var i = 0; i < splitList.length; i++) {
             testData['fileNumber' + i.toString()] = splitList[i];
         }
-      
+var modal = 'tutaj jestem';        
 //koniec
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
@@ -59,22 +59,29 @@ io.on('connection', socket => {
   })
   socket.on('send-word', (room, word) => {
       //proba
-        if (Object.values(testData).indexOf(word) > -1) {
-          console.log('poprawne slowo');
+        // if (Object.values(testData).indexOf(word) > -1) {
+        //   console.log('poprawne slowo');
           
           socket.to(room).broadcast.emit('word-message', word,{
           name: rooms[room].users[socket.id] })
           // wyslanie na front obiektu
-          
-       }
-       else{
-         console.log('nie poprawne slowo');
-         socket.emit('wrong-word-message', word,{
-         name: rooms[room].users[socket.id] })   
-       }
+          // socket.emit("testtest", testData); 
+      //  }
+      //  else{
+      //    console.log('nie poprawne slowo');
+      //    socket.to(room).broadcast.emit('wrong-word-message', word,{
+      //    name: rooms[room].users[socket.id] })   
+      //  }
       //koniec
   })
+//proba
 
+socket.on('send-modal', (room, modal) => {    
+      socket.to(room).broadcast.emit('modal-message', modal,{
+      name: rooms[room].users[socket.id] })
+ 
+})
+//koniec
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
       socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])

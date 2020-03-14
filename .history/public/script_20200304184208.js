@@ -53,11 +53,9 @@ socket.on('word-message', word => {
 //     }
 //   // console.log(testData);
 // })
-
-socket.on('wrong-word-message', word => {
-  // let word = 'Słowo niezgodne z słownikiem, przegrales'
-  appendInfo('Słowo niezgodne z słownikiem')
-  // startTimer()
+let info = 'Słowo niezgodne z słownikiem, przegrales'
+socket.on('wrong-word-message', info => {
+  console.log(info);
   
 })
 

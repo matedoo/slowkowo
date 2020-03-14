@@ -18,7 +18,11 @@ if (messageForm != null) {
     const word = wordInput.value
   
     if(word[0] == wordContainer.innerText.substr(wordContainer.innerText.length -1)){
-      socket.emit('send-word', roomName, word)
+      var lastTime = 0;
+
+      if ( Math.floor((new Date() - lastTime)/60000) < 2 ) {
+          // get from variable
+          socket.emit('send-word', roomName, word)
       console.log('poprawne slowo');
       appendInfo(`Ruch przeciwnika`)
       wordContainer.innerText = '---'
@@ -27,6 +31,13 @@ if (messageForm != null) {
       clearInterval(timerInterval);
       timePassed = 0;
       timeLeft = 10;
+      } else {
+          // get from url
+          console.log('wygrales');
+          
+          lastTime =  new Date();
+      }
+      
       
     }
     else{
@@ -43,9 +54,25 @@ socket.on('word-message', word => {
   appendInfo(`Twój ruch`)
 
   
-  startTimer();
-  
+  startTimer();  
+
 })
+
+
+ 
+  // setInterval(() => {
+  //   if(timeLeft == 0){
+  //     console.log('kuniec');
+      
+  //   }
+  // }, 2000);
+
+// console.log(winner);
+  
+// if(winner){
+//   showWin()
+// }
+// console.log(winner);
 
 // socket.on('testest', testData =>{
 //     if (Object.values(testData).indexOf(word) > -1) {
@@ -54,12 +81,9 @@ socket.on('word-message', word => {
 //   // console.log(testData);
 // })
 
-socket.on('wrong-word-message', word => {
-  // let word = 'Słowo niezgodne z słownikiem, przegrales'
-  appendInfo('Słowo niezgodne z słownikiem')
-  // startTimer()
-  
-})
+// socket.on('wrong-word-message', word => {
+//   appendInfo(`Słowo niezgodne z słownikiem, przegrales`)
+// })
 
 socket.on('room-created', room => {
   const roomElement = document.createElement('div')
@@ -150,7 +174,7 @@ function onTimesUp() {
   appendInfo('Koniec czasu')
   firstLetterContainer.innerHTML = 'Przegrałeś'
   showModal()
-
+  return winner = true;
 }
 
 function startTimer() {

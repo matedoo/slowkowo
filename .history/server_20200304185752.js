@@ -69,8 +69,7 @@ io.on('connection', socket => {
        }
        else{
          console.log('nie poprawne slowo');
-         socket.emit('wrong-word-message', word,{
-         name: rooms[room].users[socket.id] })   
+         socket.to(room).emit('wrong-word-message', word)
        }
       //koniec
   })

@@ -63,13 +63,13 @@ io.on('connection', socket => {
           console.log('poprawne slowo');
           
           socket.to(room).broadcast.emit('word-message', word,{
-          name: rooms[room].users[socket.id] })
+          name: room.users[socket.id] })
           // wyslanie na front obiektu
           
        }
        else{
          console.log('nie poprawne slowo');
-         socket.emit('wrong-word-message', word,{
+         socket.to(room).broadcast.emit('wrong-word-message', word,{
          name: rooms[room].users[socket.id] })   
        }
       //koniec

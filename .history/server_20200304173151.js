@@ -65,11 +65,11 @@ io.on('connection', socket => {
           socket.to(room).broadcast.emit('word-message', word,{
           name: rooms[room].users[socket.id] })
           // wyslanie na front obiektu
-          
+          socket.emit("testtest", testData); 
        }
        else{
          console.log('nie poprawne slowo');
-         socket.emit('wrong-word-message', word,{
+         socket.to(room).broadcast.emit('wrong-word-message', word,{
          name: rooms[room].users[socket.id] })   
        }
       //koniec

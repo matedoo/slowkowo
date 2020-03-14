@@ -57,21 +57,24 @@ io.on('connection', socket => {
     rooms[room].users[socket.id] = name
     socket.to(room).broadcast.emit('user-connected', name)
   })
+  socket.on('user-win', (room,name) =>{
+    socket.to(room).broadcast.emit('win-mod', name)
+  })
   socket.on('send-word', (room, word) => {
       //proba
-        if (Object.values(testData).indexOf(word) > -1) {
-          console.log('poprawne slowo');
+        // if (Object.values(testData).indexOf(word) > -1) {
+        //   console.log('poprawne slowo');
           
           socket.to(room).broadcast.emit('word-message', word,{
           name: rooms[room].users[socket.id] })
           // wyslanie na front obiektu
-          
-       }
-       else{
-         console.log('nie poprawne slowo');
-         socket.emit('wrong-word-message', word,{
-         name: rooms[room].users[socket.id] })   
-       }
+          // socket.emit("testtest", testData); 
+      //  }
+      //  else{
+      //    console.log('nie poprawne slowo');
+      //    socket.to(room).broadcast.emit('wrong-word-message', word,{
+      //    name: rooms[room].users[socket.id] })   
+      //  }
       //koniec
   })
 

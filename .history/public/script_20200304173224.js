@@ -47,18 +47,15 @@ socket.on('word-message', word => {
   
 })
 
-// socket.on('testest', testData =>{
-//     if (Object.values(testData).indexOf(word) > -1) {
-//           console.log('dziala');
-//     }
-//   // console.log(testData);
-// })
+socket.on('testest', testData =>{
+    if (Object.values(testData).indexOf(word) > -1) {
+          console.log('dziala');
+    }
+  // console.log(testData);
+})
 
 socket.on('wrong-word-message', word => {
-  // let word = 'Słowo niezgodne z słownikiem, przegrales'
-  appendInfo('Słowo niezgodne z słownikiem')
-  // startTimer()
-  
+  appendInfo(`Słowo niezgodne z słownikiem, przegrales`)
 })
 
 socket.on('room-created', room => {

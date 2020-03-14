@@ -1,0 +1,1 @@
+zrób dla modala settimeout wyskakujacy modal wygrany, ale przy każdym przesłaniem słowa użyj cleartimeout żeby resetować
